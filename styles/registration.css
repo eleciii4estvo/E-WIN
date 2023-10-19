@@ -22,55 +22,28 @@ header{
 main{
     display: flex;
     flex-direction: row;
-    margin: 50px 0 0 0;
+    justify-content: center;
+    align-items: center;
+    margin:0;
     flex:1;
-}
-
-.introduction{
-    width: 50%;
-}
-
-.greeting{
-    text-align: center;
 }
 
 .greeting h2{
     font-weight: 700;
     font-size: 32px;
+    text-align: center;
 }
 
-.info{
-    font-size: 20px;
-    font-weight:300;
-    text-align:left;
-    list-style: none;
-    line-height: 1.5;
-}
-
-.info li{
-    transition: 500ms;
-}
-
-.info li:hover{
-    transform: scale(1.05);
-    transform: perspective();
-}
-
-.info_num{
-    list-style:decimal;
-}
-
-.login{
-    display: flex;
+form{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
 
-.input_login{
-    width: 400px;
+.input_reg{
+    width: 500px;
     height: 15px;
     padding: 20px;
     font-size: 20px;
@@ -78,17 +51,15 @@ main{
     background: #000;
     color: #fff;
     border: solid 1px #d5d5d5;
-}
-
-.input_password{
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .input_submit{
-    width: 200px;
+    width: 250px;
     height: 50px;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 500;
+    margin: 20px 0 40px 0;
     margin-bottom: 30px;
     background: #d5d5d5;
     transition: 400ms;
@@ -100,18 +71,18 @@ main{
     border-radius: 25px;
 }
 
-.no_acc_inst{
-    margin: 0;
+.have_an_account{
+    margin: 0 0 20px 0;
     padding: 0;
     font-size: 20px;
     font-weight: 300;
 }
 
-.no_acc_inst a{
+.have_an_account a{
     color: #fff;
 }
 
-.no_acc_inst a:hover{
+.have_an_account a:hover{
     color: #7d7fff;
 }
 
