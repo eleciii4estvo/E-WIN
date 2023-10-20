@@ -1,11 +1,10 @@
 <?php
+require_once 'config.php';
 
 $driver="mysql";
 $host="localhost";
 $port = "3306";   
 $db_name="e-win";
-$db_user="root";
-$db_pass= "mysql";
 $charset="utf8";
 $options=[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
@@ -14,3 +13,4 @@ try{
 } catch(PDOException $e){
     die("Ошибка подключения к ДБ");
 }
+
