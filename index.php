@@ -1,18 +1,19 @@
+<?php include ("path.php"); ?>
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="..\styles\authorization.css">
+    <link rel="stylesheet" type="text/css" href="assets\styles\authorization.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
     <title>Login</title>
   </head>
   <body>
-    <header>
-        <img src="..\img\logo.png" class="logo" alt="Описание изображения">
-    </header>
+    <?php
+        include("app\include\header_auth.php");
+    ?>
     <main>
         <div class="introduction">
             <div class="greeting">
@@ -35,16 +36,11 @@
             <input type="text" placeholder="Имя пользователя" class="input_login">
             <input type="password" placeholder="Пароль" class="input_login input_password">
             <input type="submit" value="Войти" class="input_submit">
-            <p class="no_acc_inst">Нет аккаунта? <a href="registration.html">Зарегистрироваться</a></p>
+            <p class="no_acc_inst">Нет аккаунта? <a href="<?php echo BASE_URL;?>registration.php">Зарегистрироваться</a></p>
         </form>
     </main>
-    <footer>
-        <div class="disclaimer">
-            <p>Этот сайт предназначен исключительно в образовательных целях. Все игровые ресурсы бесплатны, и здесь нет возможности играть на реальные деньги. Функция доната используется только для поддержки развития проекта.</p>
-        </div>
-        <div class="copyrighting">
-            <p>©2023 Eleciii4estvo, все права защищены.</p>
-        </div>
-    </footer>
+    <?php
+    include("app\include\\footer_auth.php");
+    ?>
   </body>
 </html>
