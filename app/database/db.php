@@ -20,7 +20,7 @@ function dbCheckError($query){
 };
 
 //Функция выбора данных из одной таблицы
-function select($table, $selectAll=true, $params =[]){
+function select($table, $selectAll=true, $params =[], $custom=''){
     global $pdo;
     $sql = "SELECT * FROM $table";   //запрос
     //Модификация запроса, если были заданы параметры
@@ -38,10 +38,46 @@ function select($table, $selectAll=true, $params =[]){
             $i++;   //Увеличиваем инкремент каждую итерацию
         };
     };
+    //Проверка на то, не введен ли пользовательский запрос?
+    if (!empty($custom)){
+        $sql = $custom;
+    };
     $query = $pdo->prepare($sql);   //Подготавливаем запрос
     $query->execute();  //Выполняем запрос
     dbCheckError($query);
     return $selectAll ? $query->fetchAll() : $query->fetch();    //Получать все или только одну запись?
 };
+// tt(select('users', true, [], "SELECT * FROM users WHERE money>500"));
+// tt(select('users'));
 
-tt(select('users'));
+//Функция записи в БД
+function insert($table, $params=[]){
+    global $pdo;
+    $i=0;
+    $columns ='';
+    $mask='';
+    foreach($params as $key => $value){
+        if($i==0){
+            $columns = $columns . "$key";
+            $mask = $mask . "'$value'";
+        } else{
+            $columns = $columns . ", $key";
+            $mask = $mask . ", '$value'";
+        }
+        $i++;
+    }
+    $sql = "INSERT INTO $table ($columns) VALUES ($mask)";   //запрос c заполнителями
+    // tt($sql);
+    // exit();
+    $query = $pdo->prepare($sql);   //Подготавливаем запрос
+    $query->execute($params);  //Выполняем запрос
+    dbCheckError($query);
+};
+// $arrData = [
+//     'admin'=>'0',
+//     'username'=>'Andedsrson',
+//     'email'=>'andadr@dropbox.com',
+//     'password'=>'sadKASdsadw231L',
+// ];
+
+//  insert('users', $arrData);
