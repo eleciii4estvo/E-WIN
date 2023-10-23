@@ -98,7 +98,6 @@ main{
 .input_submit:hover{
     background: #fff;
     transform: scale(1.1);
-    border-radius: 25px;
 }
 
 .no_acc_inst{

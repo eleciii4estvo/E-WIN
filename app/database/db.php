@@ -74,6 +74,7 @@ function insert($table, $params){
     $query = $pdo->prepare($sql);   //Подготавливаем запрос
     $query->execute($params);  //Выполняем запрос
     dbCheckError($query);
+    return $pdo->lastInsertId();
 };
 //для отладки insert
 // $arrData = [
@@ -125,4 +126,4 @@ function delete($table, $id){
     dbCheckError($query);
 };
 
-delete('users', 3);
+// delete('users', 3);

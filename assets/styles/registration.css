@@ -92,3 +92,25 @@ footer{
     font-size: 12px;
     text-align: center;
 }
+
+.end_of_reg{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.error_msg p{
+    margin: 0;
+    padding: 0;
+    color: #ff4545;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.reg_succsesful{
+    margin: 0 0 20px 0;
+    padding: 0;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+}
