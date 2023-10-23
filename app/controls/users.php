@@ -32,6 +32,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){    //Проверяем что мето
             'email'=> $mail,
             'password'=> password_hash($password, PASSWORD_DEFAULT)
         ];
+        $id = insert('users', $post); 
         $regStatus=true;
     }
 } else{
