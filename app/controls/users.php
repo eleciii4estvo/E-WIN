@@ -34,6 +34,12 @@ if($_SERVER['REQUEST_METHOD']==='POST'){    //Проверяем что мето
         ];
         $id = insert('users', $post); 
         $regStatus=true;
+        $user = select('users', false, ['id'=>$id]);
+        $_SESSION['id']=$user['id'];
+        $_SESSION['login']=$user['username'];
+        $_SESSION['money']=$user['money'];
+        header('location: '. BASE_URL . 'main.php');
+
     }
 } else{
     $login='';

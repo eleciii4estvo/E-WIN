@@ -1,6 +1,9 @@
 <?php include ("path.php");
 include ("app\controls\users.php");
-?>
+if (isset($_SESSION['id'])){
+    header("location: " . BASE_URL . "main.php");
+    exit();
+}?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +24,7 @@ include ("app\controls\users.php");
         if($regStatus){
           echo "<div class='end_of_reg'>";
           echo "<p class='reg_succsesful'>Пользователь $login успешно зарегестрирован!</p>";
-          echo "<p class='have_an_account'>Теперь вы можете войти в свой аккаунт на странице <a href='" . BASE_URL . "'>авторизации</a></p>";
+          echo "<p class='have_an_account'>Теперь вы можете войти в свой аккаунт на странице <a href='" . BASE_URL . "'>авторизациии</a></p>";
           echo "</div>";
         } else{
           echo '<div class="introduction">';

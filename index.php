@@ -1,4 +1,9 @@
-<?php include ("path.php"); ?>
+<?php include ("path.php"); 
+include ("app\database\db.php");
+if (isset($_SESSION['id'])){
+    header("location: " . BASE_URL . "main.php");
+    exit();
+}?>
 <!doctype html>
 <html lang="en">
   <head>
