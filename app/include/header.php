@@ -1,5 +1,9 @@
 <?php include ("path.php"); 
-include ("app\database\db.php")?>
+include ("app\controls\users.php");
+if (!isset($_SESSION['id'])){
+    header("location: " . BASE_URL);
+    exit();
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

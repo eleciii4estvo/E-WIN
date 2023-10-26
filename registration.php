@@ -20,32 +20,23 @@ if (isset($_SESSION['id'])){
         include("app\include\header_auth.php");
     ?>
     <main>
-        <?php 
-        if($regStatus){
-          echo "<div class='end_of_reg'>";
-          echo "<p class='reg_succsesful'>Пользователь $login успешно зарегестрирован!</p>";
-          echo "<p class='have_an_account'>Теперь вы можете войти в свой аккаунт на странице <a href='" . BASE_URL . "'>авторизациии</a></p>";
-          echo "</div>";
-        } else{
-          echo '<div class="introduction">';
-          echo '<div class="greeting">';
-          echo'    <h2>Создание аккаунта</h2>';
-          echo'</div>';
-          echo'<div class="error_msg">';
-          echo'  <p>' . $errMsg . '</p>';
-          echo'</div>';
-          echo "<form method='post' action='registration.php'>";
-          echo "<input type='text' placeholder='Придумайте имя пользователя' class='input_reg' name='login' value='" . $login . "'>";
-          echo '<input type="email" placeholder="Введите свой email" class="input_reg" name="mail" value="' . $mail . '">';
-          echo '<input type="password" placeholder="Придумайте свой пароль" class="input_reg input_password" name="password">';
-          echo '<input type="password" placeholder="Повторите пароль" class="input_reg input_password" name="password_submit">';
-          echo '<input type="submit" value="Зарегистрироваться" class="input_submit">';
-          echo '<p class="have_an_account">Есть аккаунт? <a href="'. BASE_URL . '">Войдите</a></p>';
-          echo '</form>';
-        }
-        ?>
+          <div class="introduction">
+          <div class="greeting">
+              <h2>Создание аккаунта</h2>
+          </div>
+          <div class="error_msg">
+            <p><?=$errMsg?></p>
+          </div>
+          <form method='post' action='registration.php'>
+            <input type='text' placeholder='Придумайте имя пользователя' class='input_reg' name='login' value='<?=$login?>'>
+            <input type="email" placeholder="Введите свой email" class="input_reg" name="mail" value="<?=$mail?>">
+            <input type="password" placeholder="Придумайте свой пароль" class="input_reg input_password" name="password">
+            <input type="password" placeholder="Повторите пароль" class="input_reg input_password" name="password_submit">
+            <input type="submit" value="Зарегистрироваться" name="btn_reg" class="input_submit">
+            <p class="have_an_account">Есть аккаунт? <a href="<?=BASE_URL?>">Войдите</a></p>
+          </form>
     </main>
-    <?php
+    <?php 
     include("app\include\\footer_auth.php");
     ?>
   </body>

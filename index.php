@@ -1,5 +1,5 @@
 <?php include ("path.php"); 
-include ("app\database\db.php");
+include ("app\controls\users.php");
 if (isset($_SESSION['id'])){
     header("location: " . BASE_URL . "main.php");
     exit();
@@ -37,10 +37,14 @@ if (isset($_SESSION['id'])){
                 <li>Регистрируйтесь и окунитесь в увлекательный мир развлечений. </li>
             </ul>
         </div>
-        <form class="login">
-            <input type="text" placeholder="Имя пользователя" class="input_login">
-            <input type="password" placeholder="Пароль" class="input_login input_password">
-            <input type="submit" value="Войти" class="input_submit">
+        <form class="login" method='post' action='index.php'>
+            <h1 class="auth_name">Авторизация</h1>
+            <div class="error_msg">
+                <p><?=$errMsg?></p>
+            </div>
+            <input value="<?=$login?>" type="text" placeholder="Имя пользователя или e-mail" class="input_login" name="login">
+            <input type="password" placeholder="Пароль" class="input_login input_password" name="password">
+            <input name="btn_ath" type="submit" value="Войти" class="input_submit">
             <p class="no_acc_inst">Нет аккаунта? <a href="<?php echo BASE_URL;?>registration.php">Зарегистрироваться</a></p>
         </form>
     </main>
