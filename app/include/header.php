@@ -29,7 +29,7 @@ if (!isset($_SESSION['id'])){
             </nav>
         </div>
         <div class="right_side">
-            <p class="player_info"><a href="#"><img src="assets\img\profile_icon.png" alt="profile icon"><?php echo $_SESSION['login']?></a></p>
-            <p><?php echo $_SESSION['money']?> e</p>
+            <p class="player_info"><a href="<?=BASE_URL?>profile.php"><img src="assets\img\profile_icon.png" alt="profile icon"><?php echo $_SESSION['login']?></a></p>
+            <p><?=select('users', false, ['id'=>$_SESSION['id']])['money']?> e</p>
         </div>
     </header>

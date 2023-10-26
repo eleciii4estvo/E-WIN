@@ -33,7 +33,6 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['btn_reg'])){    //Про
         $user = select('users', false, ['id'=>$id]);
         $_SESSION['id']=$user['id'];
         $_SESSION['login']=$user['username'];
-        $_SESSION['money']=$user['money'];
         header('location: '. BASE_URL . 'main.php');
 
     }
@@ -49,13 +48,14 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['btn_ath'])){
         $errMsg='Вы не ввели логин!';
     } elseif($password== ''){
         $errMsg= 'Вы не ввели пароль!';
-    } elseif(select('users', false, ['email'=>$login]) || select('users', false, ['username'=>$login])){
-        select('users', false, ['email'=>$login]) ? $user_ath = select('users', false, ['email'=>$login]) : $user_ath = select('users', false, ['username'=>$login]);
-        if(password_verify($password, $user_ath['password'])){
-            $_SESSION['id']=$user_ath['id'];
-            $_SESSION['login']=$user_ath['username'];
-            $_SESSION['money']=$user_ath['money'];
-            header('location: '. BASE_URL . 'main.php');
+    } elseif(!select('users', false, ['email'=>$login]) && !select('users', false, ['username'=>$login])){
+        $errMsg= 'Имя пользователя или пароль введены неверно!';
+    } else {
+        select('users', false, ['email'=>$login]) ? $user = select('users', false, ['email'=>$login]) : $user = select('users', false, ['username'=>$login]);
+        if(password_verify($password, $user['password'])){
+            $_SESSION['id']=$user['id'];
+            $_SESSION['login']=$user['username'];
+            header('location: '. BASE_URL);
         } else {
             $errMsg= 'Имя пользователя или пароль введены неверно!';
         }
